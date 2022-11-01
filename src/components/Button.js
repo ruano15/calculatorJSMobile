@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     buttonDouble:{
         width: (Dimensions.get('window').width/4)*2,
     },
-    tripleButton:{
+    buttonTriple:{
         width: (Dimensions.get('window').width/4)*3,
     }
 })
@@ -29,12 +29,12 @@ const styles = StyleSheet.create({
 export default props => {
 
     const stylesButton = [styles.button]
-    if (props.double) styles.push(styles.buttonDouble)
-    if (props.triple) styles.push(styles.buttonTriple)
-    if (props.operation) styles.push(styles.operationButton)
+    if (props.double) stylesButton.push(styles.buttonDouble)
+    if (props.triple) stylesButton.push(styles.buttonTriple)
+    if (props.operation) stylesButton.push(styles.operationButton)
 
     return(
-        <TouchableHighlight onPress={props.onClick}>
+        <TouchableHighlight onPress={() => props.onClick(props.label)}>
             <Text style={stylesButton}>{props.label}</Text>
         </TouchableHighlight>
     )
